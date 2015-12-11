@@ -4,13 +4,15 @@
 
 @interface PngToBase64 : NSObject {
 }
-- (void) proc;
+- (void) proc1;
+- (void) proc2;
 @end
 
 @implementation PngToBase64
-- (void) proc
+
+// ローカルにあるPNG画像を base64文字列に変換
+- (void) proc1
 {
-	//NSLog(@"hello World!");
 	NSFileManager *manager = [NSFileManager defaultManager];
 
 	NSString *path = @"input.png";
@@ -24,8 +26,16 @@
 	else {
 		NSLog(@"%@ file not found.", path);
 	}
+}
 
-	//NSLog(@"hello World! %@", manager);
+// ネット上にあるPNG画像を base64文字列に変換
+- (void) proc2
+{
+	NSString *path = @"http://www.mindboardapps.com/blog/imgs/fractal-ginkgo-leaf.png";
+	NSURL *url = [NSURL URLWithString:path];
+	NSData *pngData = [NSData dataWithContentsOfURL:url];
+	NSString *base64String = [pngData base64EncodedString];
+	NSLog(@"pngData %@", base64String);
 }
 @end
 
@@ -33,10 +43,8 @@
 int main(int argc, const char * argv[]){
     @autoreleasepool {
 		PngToBase64 *pngToBase64 = [[[PngToBase64 alloc] init] autorelease];
-		[pngToBase64 proc];
-		NSLog(@"hello World! %@", pngToBase64);
+		[pngToBase64 proc1];
+		[pngToBase64 proc2];
 	}
    	return (0);
-
-   	//return (0);
 }
