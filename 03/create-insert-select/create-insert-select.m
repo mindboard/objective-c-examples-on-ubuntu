@@ -118,11 +118,11 @@
 
 int main(int argc, const char * argv[]){
     @autoreleasepool {
-        MyDatabase *myDb = [[MyDatabase alloc] initWithFileName:@"hello.db" andTableName:@"hello_tbl"];
+        MyDatabase *myDb = [[[MyDatabase alloc] initWithFileName:@"hello.db" andTableName:@"hello_tbl"] autorelease];
         [myDb createTable];
         [myDb insertKey:@"hello" andValue:@"world"];
         [myDb select];
-        [myDb release];
+        //[myDb release];
     }
     return (0);
 }
