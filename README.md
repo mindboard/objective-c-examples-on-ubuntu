@@ -3,10 +3,6 @@
 
 All codes are tested on Ubuntu 14.04.
 
-See details
-http://qiita.com/mindboard/items/34f192ea7372c1df61a1
-
-
 - 01 ... Hello, World!
 - 02 ... Create png image with Cairo
 - 03 ... SQLite3
